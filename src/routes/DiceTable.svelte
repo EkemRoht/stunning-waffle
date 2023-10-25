@@ -1,25 +1,22 @@
 <script>
     let rows = 2; // Начальное количество строк
     let cols = 2; // Начальное количество столбцов
-    let tableData = Array.from({ length: rows }, () => Array(cols).fill(''));
+    $: tableData = Array.from({ length: rows }, () => Array(cols).fill(''));
 
     function addRow() {
         rows++;
         tableData.push(Array(cols).fill(''));
     }
-
     function removeRow() {
-        if (rows > 2) {
+        if (rows > 1) {
             rows--;
             tableData.pop();
         }
     }
-
     function addColumn() {
         cols++;
         tableData.forEach(row => row.push(''));
     }
-
     function removeColumn() {
         if (cols > 2) {
             cols--;
