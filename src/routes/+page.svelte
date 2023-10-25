@@ -1,5 +1,5 @@
 <script>
-    import DiceTable from "./DiceTable.svelte";
+    import DiceTable from "./ModuleEditor.svelte";
 </script>
 
 <DiceTable/>
