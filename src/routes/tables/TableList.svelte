@@ -2,51 +2,22 @@
     import { liveQuery } from "dexie";
     import {db} from "$lib/js/db.js";
 
-    import TableParams from "./TableParams.svelte";
-    import TableEditor from "./TableEditor.svelte";
+    import TableScale from "./TableScale.svelte";
 
     let modules = liveQuery(
         () => db.modules.toArray()
     );
-    let tableParams = {
-        cols: 2,
-        rows: 6,
-        diceCol: true,
-        diceRow: false
-    };
-    let showNewTable = false;
 </script>
 
-
-
-{#if showNewTable}
-    <TableEditor {tableParams}/>
-{:else}
-    <ul>
-        {#if $modules}
-            {#each $modules as module (module.id)}
-                <li>{module.name}</li>
-            {/each}
-            {#if $modules.length === 0}
-                неть табличек
-            {/if}
+<ul>
+    {#if $modules}
+        {#each $modules as module (module.id)}
+            <li>{module.name}</li>
+        {/each}
+        {#if $modules.length === 0}
+            неть табличек
         {/if}
-    </ul>
+    {/if}
+</ul>
 
-    <form>
-        <details>
-            <summary>Стартовые параметры</summary>
-            <div class="grid">
-                <label for="colsCount">
-                    Столбцы:
-                    <input type="number" id="colsCount" name="colsCount" bind:value={tableParams.cols} required>
-                </label>
-                <label for="rowsCount">
-                    Столбцы:
-                    <input type="number" id="rowsCount" name="rowsCount" bind:value={tableParams.rows} required>
-                </label>
-            </div>
-        </details>
-        <button on:click={()=> showNewTable=true}>Создать новую таблицу</button>
-    </form>
-{/if}
+<TableScale/>
