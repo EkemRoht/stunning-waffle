@@ -10,7 +10,7 @@
         </ul>
         <hgroup>
             <h2>Stunning Waffle</h2>
-            <h3>Смотрит, мам, я в телевизоре</h3>
+            <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
         <ul>
             <li><a href="/tables">Таблицы</a></li>
