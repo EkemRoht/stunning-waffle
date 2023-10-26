@@ -5,8 +5,7 @@
     let npc;
     function generate(table) {
         const randomElementIndex = Math.floor(Math.random() * table.length);
-        const randomTrait = table[randomElementIndex];
-        return randomTrait;
+        return table[randomElementIndex];
     }
 </script>
 {generate(tables['gender'])}
