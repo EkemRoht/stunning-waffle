@@ -4,6 +4,9 @@
     import TableList from "./TableList.svelte";
     import TableEditor from "./TableEditor.svelte";
 
+    let startTableParams = {};
 </script>
 <TableList/>
+<!--
 <TableEditor/>
+-->
