@@ -38,4 +38,4 @@
     </table>
 </div>
 <p>{status}</p>
-<!--<button on:click={addTable()}>Создать</button>-->
+<button on:click={addTable()}>Создать</button>

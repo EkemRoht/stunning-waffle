@@ -46,14 +46,6 @@
                     <input type="number" id="rowsCount" name="rowsCount" bind:value={tableParams.rows} required>
                 </label>
             </div>
-            <label for="diceCol">
-                <input type="checkbox" id="diceCol" name="diceCol" role="switch" bind:checked={tableParams.diceCol}>
-                Автоматически заполнить столбец дайсов
-            </label>
-            <label for="diceRow">
-                <input type="checkbox" id="diceRow" name="diceRow" role="switch" bind:checked={tableParams.diceRow}>
-                Автоматически заполнить строку дайсов
-            </label>
         </details>
         <button on:click={()=> showNewTable=true}>Создать новую таблицу</button>
     </form>
