@@ -16,6 +16,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@picocss/pico": "^1.5.10"
+		"@picocss/pico": "^1.5.10",
+		"dexie": "^4.0.1-beta.1"
 	}
 }

@@ -1,11 +1,9 @@
 <script>
-    let table = {};
-    let newTableFormShow = false;
-</script>
-{#if !table.name}
-    <button on:click={()=> newTableFormShow = true}>Новая таблица</button>
-{/if}
-<!--
-{#if newTableFormShow}
 
-{/if}-->
+</script>
+<blockquote>
+    Тут когда-то будут какие-то штуки. Бип-боп.
+    <footer>
+        <cite>Или нет</cite>
+    </footer>
+</blockquote>
