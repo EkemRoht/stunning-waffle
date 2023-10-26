@@ -1,4 +1,7 @@
 <script>
     export let data;
-    console.log(data);
+
+    import TableEditor from "../TableEditor.svelte";
 </script>
+
+<TableEditor tableScale={data} />
