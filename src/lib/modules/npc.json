@@ -1,5 +1,6 @@
 {
   "name": "Генерация НПС",
+  "template": "@(gender)",
   "tables": {
     "gender": [
       "мужчина",
@@ -9,5 +10,6 @@
       "скрыт или трудно определить",
       "@(gender)"
     ]
-  }
+  },
+  "requirements": ["gender"]
 }
