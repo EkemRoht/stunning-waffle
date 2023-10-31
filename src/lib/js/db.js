@@ -2,6 +2,7 @@ import Dexie from 'dexie';
 
 export const db = new Dexie ('waffle');
 db.version(1).stores({
-    modules: 'name',
-    content: 'name'
+    recipes: 'name',
+    waffleBits: 'name',
+    waffles: 'name'
 });

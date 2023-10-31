@@ -14,16 +14,16 @@
                 try {
                     const data = await file.text();
                     let moduleData = JSON.parse(data);
-                    await db.modules.put({
+                    await db.recipes.put({
                         name: moduleData.name,
                         template: moduleData.template,
                         requirements: moduleData.requirements
                     });
 
                     for (const tableName of Object.keys(moduleData.tables)) {
-                        await db.content.put({
+                        await db.waffleBits.put({
                             name: tableName,
-                            content: moduleData.tables[tableName]
+                            bits: moduleData.tables[tableName]
                         });
                     }
                 } catch (error) {

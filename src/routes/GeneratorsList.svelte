@@ -4,7 +4,7 @@
     import Generator from "./Generator.svelte";
 
     let modules = liveQuery(async () => {
-        return await db.modules
+        return await db.recipes
             .toArray()
     });
 
