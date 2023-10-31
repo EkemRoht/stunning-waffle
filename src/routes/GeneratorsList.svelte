@@ -5,23 +5,27 @@
     let modules = liveQuery(async () => {
         return await db.modules
             .toArray()
-    })
+    });
+
+    $: generator = {};
+    let generatorOpen = false;
+    function moduleHandler (module) {
+        generator = module;
+        generatorOpen = true;
+    }
 </script>
 
 
-
-<article>
-    <header>
-            <h4>Генераторы</h4>
-    </header>
-
+<h3>Генераторы</h3>
+{#if generatorOpen}
+    puq
+    <button on:click={generatorOpen=false}>Закрыть</button>
+{:else}
     {#if !$modules}
-        <a href="#" aria-busy="true">Loading…</a>
-    {/if}
-
-    <ul>
+        <center><a href="#" aria-busy="true">Loading…</a></center>
+    {:else}
         {#each ($modules || []) as module}
-            <li>{module.name}</li>
+            <button on:click={moduleHandler(module)}>{module.name}</button>
         {/each}
-    </ul>
-</article>
+    {/if}
+{/if}
