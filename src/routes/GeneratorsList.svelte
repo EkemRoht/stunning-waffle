@@ -13,13 +13,17 @@
         generator = module;
         generatorOpen = true;
     }
+    function moduleClose() {
+        generator = {};
+        generatorOpen = false;
+    }
 </script>
 
 
 <h3>Генераторы</h3>
 {#if generatorOpen}
     puq
-    <button on:click={generatorOpen=false}>Закрыть</button>
+    <button on:click={moduleClose}>Закрыть</button>
 {:else}
     {#if !$modules}
         <center><a href="#" aria-busy="true">Loading…</a></center>
