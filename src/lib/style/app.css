@@ -35,3 +35,7 @@
     --switch-color: var(--primary-inverse);
     --switch-checked-background-color: var(--primary);
 }
+
+h4, h5, h6 {
+    --typography-spacing-vertical: 0;
+}
