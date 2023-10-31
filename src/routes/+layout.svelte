@@ -9,7 +9,7 @@
             <li><a href="/">Генераторы</a></li>
         </ul>
         <hgroup>
-            <h2>Stunning Waffle</h2>
+            <h2><a href="/">Stunning Waffle</a></h2>
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
         <ul>

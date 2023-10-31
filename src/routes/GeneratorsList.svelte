@@ -1,6 +1,7 @@
 <script>
     import {liveQuery} from "dexie";
     import {db} from "$lib/js/db.js";
+    import Generator from "./Generator.svelte";
 
     let modules = liveQuery(async () => {
         return await db.modules
@@ -22,7 +23,7 @@
 
 <h3>Генераторы</h3>
 {#if generatorOpen}
-    puq
+    <Generator {generator}/>
     <button on:click={moduleClose}>Закрыть</button>
 {:else}
     {#if !$modules}
