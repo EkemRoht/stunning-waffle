@@ -1,6 +1,6 @@
 {
   "name": "Генерация НПС",
-  "template": "",
+  "template": "@(name) @(surname). @(gender). @(appearance|3+)",
   "requirements": [],
   "tables": {
     "name": [
