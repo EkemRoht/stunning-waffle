@@ -13,7 +13,7 @@
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
         <ul>
-            <li><del disabled>Таблицы</del></li>
+            <li><a href="/modules">Модули</a></li>
         </ul>
     </nav>
 

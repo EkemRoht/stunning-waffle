@@ -1,6 +1,7 @@
 import Dexie from 'dexie';
 
-export const db = new Dexie ('modules');
+export const db = new Dexie ('waffle');
 db.version(1).stores({
-    modules: '++id, name, content'
+    modules: 'name',
+    content: 'name'
 });

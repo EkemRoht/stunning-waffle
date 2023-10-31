@@ -1,10 +1,11 @@
-<!-- App.svelte -->
+
 <script>
     let selectedFiles = [];
     let jsonData = {};
 
     async function handleFileInput(event) {
         selectedFiles = event.target.files;
+
     }
 
     async function loadJsonFiles() {
@@ -27,5 +28,5 @@
     }
 </script>
 
-<input type="file" multiple on:change={handleFileInput} />
+<input type="file" on:change={handleFileInput} />
 <button on:click={loadJsonFiles}>Загрузить и вывести JSON файлы</button>
