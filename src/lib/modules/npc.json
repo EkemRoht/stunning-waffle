@@ -1,6 +1,9 @@
 {
   "name": "Генерация НПС",
-  "template": "@(name) @(surname). @(gender). @(appearance|3)",
+  "template": {
+    "header": "@(name) @(surname)",
+    "content": "Пол: @(gender)::Внешность: @(appearance|3)"
+  },
   "requirements": ["name", "surname", "gender", "appearance"],
   "tables": {
     "name": [
@@ -38,8 +41,7 @@
       "мужчина",
       "женщина",
       "женщина",
-      "скрыт или трудно определить",
-      "@(gender)"
+      "скрыт или трудно определить"
     ],
     "appearance": [
       ["Крупный", "Миловидный", "Бывалый", "Точёный", "Симпатичный", "Атлетичный"],

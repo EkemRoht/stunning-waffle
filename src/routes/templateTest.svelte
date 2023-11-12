@@ -39,3 +39,12 @@
     {appearance}
     <span on:click={() => regenerate('appearance')}>🔀</span>
 </p>
+
+<article>
+    <header>sd</header>
+    bububu
+    <blockquote>sd</blockquote>
+    <footer>
+        <button>test</button>
+    </footer>
+</article>
