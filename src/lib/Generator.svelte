@@ -1,6 +1,5 @@
 <script>
-    import {db} from "$lib/js/db.js";
-    import {liveQuery} from "dexie";
+    import {db} from "./js/db.js";
 
     export let generator;
     async function getWaffleBits (names) {

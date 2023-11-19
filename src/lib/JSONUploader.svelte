@@ -1,5 +1,5 @@
 <script>
-    import {db} from "$lib/js/db.js";
+    import {db} from "./js/db.js";
 
     let selectedFiles = [];
 
@@ -34,5 +34,10 @@
     }
 </script>
 
-<input type="file" multiple on:change={handleFileInput} />
-<button on:click={loadJsonFiles}>Загрузить</button>
+<article>
+    <header>
+        <b>Загрузить новый модуль</b>
+    </header>
+    <input type="file" multiple on:change={handleFileInput} />
+    <button on:click={loadJsonFiles}>Загрузить</button>
+</article>

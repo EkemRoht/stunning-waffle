@@ -1,6 +1,6 @@
 <script>
     import {liveQuery} from "dexie";
-    import {db} from "$lib/js/db.js";
+    import {db} from "./js/db.js";
     import Generator from "./Generator.svelte";
 
     let modules = liveQuery(async () => {
