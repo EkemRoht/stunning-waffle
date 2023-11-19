@@ -1,47 +1,44 @@
-# Svelte + Vite
+# Stunning Waffle Generator
 
-This template should help get you started developing with Svelte in Vite.
+Нет времени объяснять, это генератор штук для ГМов. Здесь уже готов целый один модуль НПС.
 
-## Recommended IDE Setup
+Дальше я объясню как устроен файл модуля.
+### `"name"`
+Название модуля, то как модуль будет отображаться в списке генераторов
+### `"template"`
+Сам шаблон генерации.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+Синтаксис: `@(название таблицы|количество)`. Из указанной таблицы будет получено указанное после `|` количество случайных элементов. Если элемент 1, то достаточно написать просто название таблицы.
 
-## Need an official Svelte framework?
+**Пример:** `@(gender)` и `@(appearance|3)`
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+### `"header"`
+Заголовок, будет отображаться сверх карточки результата с особым оформлением. Так же это поле будет использоваться для сохранения данных в базу. Сейчас нет.
 
-## Technical considerations
+**Пример:** `@(name) «@(nickname)» @(surname)`
 
-**Why use this over SvelteKit?**
+### `"content"`
+Более описательная часть блока генерации. Всё то же самое, что и в заголовке, но сюда можно накрутить целую кучу текста. Перевод строк обозначается при помощи `::`.
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+### `"requirements"`
+Полный список таблиц необходимых для заполнения шаблона. К заполнению обязателен.
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+### `"tables"`
+Непосредственно таблицы шаблона. Не обязательная часть, если ваш шаблон, например, использует таблицы из другого модуля.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+Синтаксис следующий:
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```json
+"уникальное название таблицы": [
+'значение №1',
+'значение №2',
+...
+]
+```
+Можно использовать вложенные массивы для более сложных таблиц, например так:
+```json
+"уникальное название таблицы": [
+['значение №1/1', 'значение №1/2'],
+['значение №2/1', 'значение №2/2'],
+]
 ```
