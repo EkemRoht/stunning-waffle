@@ -1,0 +1,11 @@
+{
+  "name": "Генерация зданий",
+  "template": {
+    "header": "@(name) «@(nickname)» @(surname)",
+    "content": "Пол: @(gender)::Происхождение: @(origin)::Внешность: @(appearance|3)::Одежда: @(cloth|3)::Цели: @(goal|2)::Методы: @(method|2)::Особенности: @(features|2)::Интересы: @(interests)::Причуды: @(quirks)::Простая работа: @(job_common)::Редкая работа: @(job_rare)"
+  },
+  "requirements": [],
+  "tables": {
+
+  }
+}
