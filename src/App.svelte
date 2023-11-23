@@ -3,22 +3,18 @@
     import './app.css';
     import JSONUploader from "./lib/JSONUploader.svelte";
     import GeneratorsList from "./lib/GeneratorsList.svelte";
+    import GenTest from "./lib/GenTest.svelte";
+
 </script>
 
 <main class="container">
     <nav>
-<!--        <ul>-->
-<!--            <li><a href="/">Генераторы</a></li>-->
-<!--        </ul>-->
         <hgroup>
-            <h1><a href="/">Stunning Waffle</a></h1>
-            <h>Смотри, мам, я в телевизоре</h>
+            <h1><a href="#">Stunning Waffle</a></h1>
+            <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
-<!--        <ul>-->
-<!--            <li><a href="/modules">Модули</a></li>-->
-<!--        </ul>-->
     </nav>
-
+    <GenTest/>
     <GeneratorsList/>
     <JSONUploader/>
 </main>

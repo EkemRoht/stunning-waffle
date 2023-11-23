@@ -1,5 +1,6 @@
 <script>
     import {db} from "./js/db.js";
+    import LinkTest from "./LinkTest.svelte";
 
     export let generator;
     async function getWaffleBits (names) {
@@ -30,11 +31,17 @@
             const maxCount = match[1].indexOf('|') > 0 ? parseInt(match[1].split('|')[1]) : 1;
             const currentBits = bits.filter((value)=>{return value.name === bitsName});
 
-            let randomBits = [];
+            /*let randomBits = [];
             for (let i = 0; i < maxCount; i++) {
                 randomBits.push(generateRandomItem(currentBits[0].bits));
             }
-            filledTemplate = filledTemplate.replace(match[0], randomBits.join(', '));
+            filledTemplate = filledTemplate.replace(match[0], randomBits.join(', '));*/
+            let someBits = ``;
+            for (let i = 0; i < maxCount; i++) {
+                // randomBits.push(generateRandomItem(currentBits[0].bits));
+                someBits += `<a href="#">${generateRandomItem(currentBits[0].bits)}</a> `
+            }
+            filledTemplate = filledTemplate.replace(match[0], someBits);
         }
 
         return filledTemplate;
@@ -52,39 +59,7 @@
         }
     }
 
-    // Функция для заполнения шаблона данными
-    /*async function fillTemplate(template) {
-        const pattern = /@\((.*?)\)(?:\|(\d+)\+)?/g;
-        let match;
-        let filledTemplate = template;
-
-        while ((match = pattern.exec(template)) !== null) {
-            const bitsName = match[1].split('|')[0];
-            const maxCount = match[1].indexOf('|') > 0 ? parseInt(match[1].split('|')[1]) : 1;
-            // Получаем данные из IndexedDB по названию таблицы tableName
-            const data = await db.waffleBits
-                .where('name').equalsIgnoreCase(bitsName)
-                .first();
-
-            let randomBits = [];
-            for (let i = 0; i < maxCount; i++) {
-                randomBits.push(generateRandomItem(data.bits));
-            }
-            filledTemplate = filledTemplate.replace(match[0], randomBits.join(', '));
-        }
-
-        return filledTemplate;
-    }*/
-
-    // Пример использования
-    // const template = "@(name) @(surname). @(gender). @(appearance|3+)";
-    // fillTemplate(template).then((filledTemplate) => {
-    //     console.log(filledTemplate);
-    // });
-
 </script>
-
-<!--{@html renderTemplate(generator.template)}-->
 
 {#await getWaffleBits(generator.requirements)}
     <p>...waiting</p>
