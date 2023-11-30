@@ -3,7 +3,6 @@
     import './app.css';
     import JSONUploader from "./lib/JSONUploader.svelte";
     import GeneratorsList from "./lib/GeneratorsList.svelte";
-    import GenTest from "./lib/GenTest.svelte";
 
 </script>
 
@@ -14,7 +13,6 @@
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
     </nav>
-    <GenTest/>
     <GeneratorsList/>
     <JSONUploader/>
 </main>

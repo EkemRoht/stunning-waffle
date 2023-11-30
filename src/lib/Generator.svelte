@@ -1,6 +1,5 @@
 <script>
     import {db} from "./js/db.js";
-    import LinkTest from "./LinkTest.svelte";
 
     export let generator;
     async function getWaffleBits (names) {
@@ -36,12 +35,12 @@
                 randomBits.push(generateRandomItem(currentBits[0].bits));
             }
             filledTemplate = filledTemplate.replace(match[0], randomBits.join(', '));*/
-            let someBits = ``;
+            let someBits = [];
             for (let i = 0; i < maxCount; i++) {
                 // randomBits.push(generateRandomItem(currentBits[0].bits));
-                someBits += `<a href="#">${generateRandomItem(currentBits[0].bits)}</a> `
+                someBits.push(`<a href="#">${generateRandomItem(currentBits[0].bits)}</a>`);
             }
-            filledTemplate = filledTemplate.replace(match[0], someBits);
+            filledTemplate = filledTemplate.replace(match[0], someBits.join(', '));
         }
 
         return filledTemplate;

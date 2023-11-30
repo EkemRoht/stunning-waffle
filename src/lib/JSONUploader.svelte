@@ -34,10 +34,18 @@
     }
 </script>
 
+<!--
 <article>
     <header>
-        <b>Загрузить новый модуль</b>
+
     </header>
     <input type="file" multiple on:change={handleFileInput} />
     <button on:click={loadJsonFiles}>Загрузить</button>
-</article>
+</article>-->
+<details>
+    <summary><b>Загрузить новый модуль</b></summary>
+    <p>
+        <input type="file" multiple on:change={handleFileInput} />
+        <button on:click={loadJsonFiles}>Загрузить</button>
+    </p>
+</details>
