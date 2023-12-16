@@ -1,68 +1,30 @@
 <script>
-    import { db } from "./js/db.js";
-    import { liveQuery } from "dexie";
+    import CompanyForm from "./CompanyForm.svelte";
 
-    let company = {
-        name: '',
-        activeShuffles: []
-    };
-    let searchQuery = '';
-    $: availableShuffles = liveQuery(async () => {
-        const tables = await db.waffleBits.toArray();
-        const filteredShuffles = tables.filter(shuffle =>
-            shuffle.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-        return filteredShuffles.filter(shuffle => !company.activeShuffles.includes(shuffle.name));
-    });
-
-    function addShuffle (shuffle) {
-        if (!company.activeShuffles.includes(shuffle.name)) {
-            company.activeShuffles = [...company.activeShuffles, shuffle.name];
-        }
-    }
-    function removeShuffle (shuffle) {
-        company.activeShuffles = company.activeShuffles.filter((s) => s !== shuffle);
-    }
-
-    async function saveCompany() {
-        await db.companies.put(company);
-        company = {
-            name: '',
-            activeShuffles: []
-        };
+    let showForm = false;
+    function showComponent() {
+        showForm = !showForm;
     }
 </script>
 
-<!-- Теперь разметка компонента -->
-<div>
-    <label for="companyName">Название компании:</label>
-    <input bind:value={company.name} type="text" id="companyName" />
 
-    <details>
-        <summary>Выбрать необходимые для работы таблицы</summary>
-        {#if company.activeShuffles.length > 0}
-            <label>Подключенные таблицы:</label>
-            <div class="list">
-                {#each company.activeShuffles as module}
-                    <button on:click={() => removeShuffle(module)}>{module}</button>
-                {/each}
-            </div>
-        {/if}
+{#if showForm}
+    <dialog open>
+        <article>
+            <header><button>X</button></header>
+            <h3>Confirm your action!</h3>
+            <p>
+                Mauris non nibh vel nisi sollicitudin malesuada.
+                Donec ut sagittis erat. Praesent eu eros felis.
+                Ut consectetur placerat pulvinar.
+            </p>
+            <footer>
+                <a href="#" role="button" class="secondary" on:click={showComponent}>Cancel</a>
+                <a href="#" role="button" on:click={showComponent}>Confirm</a>
+            </footer>
+        </article>
+        <CompanyForm/>
+    </dialog>
+{/if}
 
-        <input bind:value={searchQuery} type="text" placeholder="Введите название таблицы" />
-        {#if !$availableShuffles}
-            <a href="#" aria-busy="true">Загрузочка…</a>
-        {:else}
-            <div class="list">
-                {#each $availableShuffles as module}
-                    <button class="outline" on:click={() => addShuffle(module)}>{module.name}</button>
-                {/each}
-            </div>
-        {/if}
-    </details>
-    <button on:click={saveCompany}>Сохранить компанию</button>
-</div>
-
-<style>
-
-</style>
+<button on:click={showComponent}>Создать новую компанию</button>
