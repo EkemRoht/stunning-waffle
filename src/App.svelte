@@ -16,7 +16,7 @@
     <article>
         <CompaniesManager/>
         <footer>
-<!--            <JSONUploader/>-->
+            <JSONUploader/>
         </footer>
     </article>
 </main>

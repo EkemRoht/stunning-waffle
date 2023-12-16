@@ -5,5 +5,5 @@ db.version(1).stores({
     recipes: 'name',
     waffleBits: 'name',
     waffles: 'name',
-    companies: '&id,&name'
+    companies: '++id,name'
 });

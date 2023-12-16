@@ -2,70 +2,67 @@
     import { db } from "./js/db.js";
     import { liveQuery } from "dexie";
 
-    let companyName = '';
-    let selectedModules = [];
+    let company = {
+        name: '',
+        activeShuffles: []
+    };
     let searchQuery = '';
-    $: availableModules = liveQuery(async () => {
-        const modules = await db.waffleBits.toArray();
-        const filteredModules = modules.filter(module =>
-            module.name.toLowerCase().includes(searchQuery.toLowerCase())
+    $: availableShuffles = liveQuery(async () => {
+        const tables = await db.waffleBits.toArray();
+        const filteredShuffles = tables.filter(shuffle =>
+            shuffle.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        return filteredModules.filter(module => !selectedModules.includes(module.name));
+        return filteredShuffles.filter(shuffle => !company.activeShuffles.includes(shuffle.name));
     });
 
-    // Функция для добавления модуля
-    const addModule = (module) => {
-        if (!selectedModules.includes(module.name)) {
-            selectedModules = [...selectedModules, module.name];
+    function addShuffle (shuffle) {
+        if (!company.activeShuffles.includes(shuffle.name)) {
+            company.activeShuffles = [...company.activeShuffles, shuffle.name];
         }
-    };
+    }
+    function removeShuffle (shuffle) {
+        company.activeShuffles = company.activeShuffles.filter((s) => s !== shuffle);
+    }
 
-    // Функция для удаления модуля
-    const removeModule = (module) => {
-        selectedModules = selectedModules.filter((m) => m !== module);
-    };
-
-    // Функция для сохранения компании
-    const saveCompany = async () => {
-        const companyData = {
-            name: companyName,
-            modules: selectedModules,
+    async function saveCompany() {
+        await db.companies.put(company);
+        company = {
+            name: '',
+            activeShuffles: []
         };
-
-        // Сохраняем данные компании в базу данных
-        await db.companies.add(companyData);
-
-        // Очищаем форму
-        companyName = '';
-        selectedModules = [];
-    };
+    }
 </script>
 
 <!-- Теперь разметка компонента -->
 <div>
     <label for="companyName">Название компании:</label>
-    <input bind:value={companyName} type="text" id="companyName" />
+    <input bind:value={company.name} type="text" id="companyName" />
 
-    <label>Выбранные модули:</label>
-    <ul>
-        {#each selectedModules as module}
-            <li>{module} <button on:click={() => removeModule(module)}>Удалить</button></li>
-        {/each}
-    </ul>
+    <details>
+        <summary>Выбрать необходимые для работы таблицы</summary>
+        {#if company.activeShuffles.length > 0}
+            <label>Подключенные таблицы:</label>
+            <div class="list">
+                {#each company.activeShuffles as module}
+                    <button on:click={() => removeShuffle(module)}>{module}</button>
+                {/each}
+            </div>
+        {/if}
 
-    <label>Поиск доступных модулей:</label>
-    <input bind:value={searchQuery} type="text" placeholder="Введите название модуля" />
-
-    <label>Доступные модули:</label>
-    {#if !$availableModules}
-        <p>Грузицца.</p>
-    {:else}
-        <div>
-            {#each $availableModules as module}
-                <button class="secondary" on:click={() => addModule(module)}>{module.name}</button>
-            {/each}
-        </div>
-    {/if}
-
+        <input bind:value={searchQuery} type="text" placeholder="Введите название таблицы" />
+        {#if !$availableShuffles}
+            <a href="#" aria-busy="true">Загрузочка…</a>
+        {:else}
+            <div class="list">
+                {#each $availableShuffles as module}
+                    <button class="outline" on:click={() => addShuffle(module)}>{module.name}</button>
+                {/each}
+            </div>
+        {/if}
+    </details>
     <button on:click={saveCompany}>Сохранить компанию</button>
 </div>
+
+<style>
+
+</style>
