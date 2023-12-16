@@ -2,6 +2,7 @@
     import '@picocss/pico';
     import './app.css';
     import CompaniesManager from "./lib/CompaniesManager.svelte";
+    import JSONUploader from "./lib/JSONUploader.svelte";
 </script>
 
 <main class="container">
@@ -12,5 +13,10 @@
         </hgroup>
     </nav>
 
-    <CompaniesManager/>
+    <article>
+        <CompaniesManager/>
+        <footer>
+<!--            <JSONUploader/>-->
+        </footer>
+    </article>
 </main>
