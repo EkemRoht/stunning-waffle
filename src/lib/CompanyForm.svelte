@@ -59,4 +59,4 @@
         </div>
     {/if}
 </details>
-<a role="button" href="#" on:click={saveCompany}>Сохранить компанию</a>
+<button href="#" on:click={saveCompany}>Сохранить компанию</button>
