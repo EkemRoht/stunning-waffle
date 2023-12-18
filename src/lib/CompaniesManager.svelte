@@ -2,19 +2,12 @@
     import {liveQuery} from "dexie";
     import {db} from "./js/db.js";
     import CompanyForm from "./CompanyForm.svelte";
+    import {currentCompany} from "./js/currentCompanyStore.js";
 
     let companies = liveQuery(async () => {
         return await db.companies
             .toArray()
     });
-    let currentCompany;
-    async function getCompany (id) {
-        currentCompany = await db.companies
-            .where('id')
-            .equals(id)
-            .first()
-        console.log(currentCompany);
-    }
 
     let newCompanyForm = false;
     function showNewCompanyForm() {
@@ -22,15 +15,15 @@
     }
 </script>
 
-{#if currentCompany}
-    puq
+{#if $currentCompany.name}
+    ///
 {:else}
     {#if !$companies}
         <a href="#" aria-busy="true">Загрузка…</a>
     {:else}
         <button on:click={showNewCompanyForm}>Создать новую компанию</button>
         {#each ($companies || []) as company}
-            <button class="outline" on:click={getCompany(company.id)}>{company.name}</button>
+            <button class="outline" on:click={currentCompany.open(company.id)}>{company.name}</button>
         {/each}
     {/if}
 
