@@ -3,6 +3,7 @@
     import './app.css';
     import CompaniesManager from "./lib/CompaniesManager.svelte";
     import JSONUploader from "./lib/JSONUploader.svelte";
+    import CompaniesDropdownList from "./lib/CompaniesDropdownList.svelte";
 </script>
 
 <main class="container">
@@ -11,18 +12,7 @@
             <h1><a href="#" on:click|preventDefault>Stunning Waffle</a></h1>
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
-        <!--<ul>
-            <li>
-                <details role="list" dir="rtl">
-                    <summary aria-haspopup="listbox" role="link">Dropdown</summary>
-                    <ul role="listbox">
-                        <li><a>Action</a></li>
-                        <li><a>Another action</a></li>
-                        <li><a>Something else here</a></li>
-                    </ul>
-                </details>
-            </li>
-        </ul>-->
+        <CompaniesDropdownList/>
     </nav>
 
     <article>
