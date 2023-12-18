@@ -1,44 +1,41 @@
 <script>
     import {liveQuery} from "dexie";
     import {db} from "./js/db.js";
-    import CompanyForm from "./CompanyForm.svelte";
     import {currentCompany} from "./js/currentCompanyStore.js";
-    import CompanyOpen from "./CompanyOpen.svelte";
-    $: console.log($currentCompany)
+    import CompanyForm from "./CompanyForm.svelte";
 
     let companies = liveQuery(async () => {
         return await db.companies
             .toArray()
     });
 
-    let newCompanyForm = false;
-    function showNewCompanyForm() {
-        newCompanyForm = !newCompanyForm;
+    let showCompanyForm = false;
+    function toggleCompanyForm() {
+        showCompanyForm = !showCompanyForm;
     }
-
 </script>
 
 {#if $currentCompany}
-    <CompanyOpen/>
+    <nav>
+        <ul>
+            <li><strong role="link">{$currentCompany.name}</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#" on:click|preventDefault={toggleCompanyForm}>Редактировать</a></li>
+            <li><a href="#" on:click|preventDefault={currentCompany.exit}>Закрыть</a></li>
+        </ul>
+    </nav>
 {:else}
-    {#if !$companies}
-        <a href="#" aria-busy="true">Загрузка…</a>
-    {:else}
-        <button on:click={showNewCompanyForm}>Создать новую компанию</button>
-        {#each ($companies || []) as company}
-            <button class="outline" on:click={currentCompany.open(company.id)}>{company.name}</button>
-        {/each}
-    {/if}
+    <details role="list">
+        <summary aria-haspopup="listbox">Выбор активной компании</summary>
+        <ul role="listbox">
+            {#each ($companies || []) as company}
+                <li><a href="#" on:click|preventDefault={currentCompany.open(company.id)}>{company.name}</a></li>
+            {/each}
+        </ul>
+    </details>
+{/if}
 
-    {#if newCompanyForm}
-        <dialog open>
-            <article>
-                <header>
-                    <a href="#" aria-label="Close" class="close" on:click|preventDefault={showNewCompanyForm}></a>
-                    Создание новой компании
-                </header>
-                <CompanyForm/>
-            </article>
-        </dialog>
-    {/if}
+{#if showCompanyForm}
+    <CompanyForm/>
 {/if}
