@@ -3,6 +3,7 @@
     import {db} from "./js/db.js";
     import CompanyForm from "./CompanyForm.svelte";
     import {currentCompany} from "./js/currentCompanyStore.js";
+    import CompanyOpen from "./CompanyOpen.svelte";
     $: console.log($currentCompany)
 
     let companies = liveQuery(async () => {
@@ -18,7 +19,7 @@
 </script>
 
 {#if $currentCompany}
-    <button on:click={currentCompany.exit}>Close</button>
+    <CompanyOpen/>
 {:else}
     {#if !$companies}
         <a href="#" aria-busy="true">Загрузка…</a>

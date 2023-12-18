@@ -8,7 +8,7 @@
 <main class="container">
     <nav>
         <hgroup>
-            <h1><a href="#">Stunning Waffle</a></h1>
+            <h1><a href="#" on:click|preventDefault>Stunning Waffle</a></h1>
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
         <!--<ul>

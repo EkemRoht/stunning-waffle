@@ -2,7 +2,7 @@ import {writable} from "svelte/store";
 import {db} from "./db.js";
 
 function createCompanyStore() {
-    const { subscribe, set } = writable({});
+    const { subscribe, set } = writable(null);
 
     return {
         subscribe,
