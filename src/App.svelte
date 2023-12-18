@@ -1,9 +1,9 @@
 <script>
     import '@picocss/pico';
     import './app.css';
-    import CompaniesManager from "./lib/CompaniesManager.svelte";
     import JSONUploader from "./lib/JSONUploader.svelte";
     import CompaniesDropdownList from "./lib/CompaniesDropdownList.svelte";
+    import MainComponent from "./lib/MainFrameComponent.svelte";
 </script>
 
 <main class="container">
@@ -18,7 +18,7 @@
         <header>
             <CompaniesDropdownList/>
         </header>
-        <CompaniesManager/>
+        <MainComponent/>
         <footer>
             <JSONUploader/>
         </footer>
