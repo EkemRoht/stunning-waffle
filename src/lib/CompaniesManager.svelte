@@ -3,6 +3,7 @@
     import {db} from "./js/db.js";
     import CompanyForm from "./CompanyForm.svelte";
     import {currentCompany} from "./js/currentCompanyStore.js";
+    $: console.log($currentCompany)
 
     let companies = liveQuery(async () => {
         return await db.companies
@@ -13,10 +14,11 @@
     function showNewCompanyForm() {
         newCompanyForm = !newCompanyForm;
     }
+
 </script>
 
-{#if $currentCompany.name}
-    ///
+{#if $currentCompany}
+    <button on:click={currentCompany.exit}>Close</button>
 {:else}
     {#if !$companies}
         <a href="#" aria-busy="true">Загрузка…</a>

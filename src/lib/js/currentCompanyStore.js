@@ -13,8 +13,8 @@ function createCompanyStore() {
                 .first()
                 .then(res => set(res));
         },
-        close: () => {
-            set({});
+        exit: () => {
+            set(null);
         }
     }
 }
