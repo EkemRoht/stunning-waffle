@@ -11,6 +11,18 @@
             <h1><a href="#">Stunning Waffle</a></h1>
             <h3>Смотри, мам, я в телевизоре</h3>
         </hgroup>
+        <!--<ul>
+            <li>
+                <details role="list" dir="rtl">
+                    <summary aria-haspopup="listbox" role="link">Dropdown</summary>
+                    <ul role="listbox">
+                        <li><a>Action</a></li>
+                        <li><a>Another action</a></li>
+                        <li><a>Something else here</a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>-->
     </nav>
 
     <article>
