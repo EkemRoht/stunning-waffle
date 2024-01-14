@@ -2,6 +2,7 @@
     import {currentCompany} from "./js/currentCompanyStore.js";
     import CompaniesManager from "./CompaniesManager.svelte";
     import JSONUploader from "./JSONUploader.svelte";
+    import Editor from "./Editor.svelte";
 </script>
 
 {#if $currentCompany}
@@ -11,13 +12,14 @@
 {/if}
 
 <article>
-    <header>
-        <CompaniesManager/>
-    </header>
+<!--    <header>-->
+<!--        <CompaniesManager/>-->
+<!--    </header>-->
 
 
 
-    <footer>
-        <JSONUploader/>
-    </footer>
+<!--    <footer>-->
+<!--        <JSONUploader/>-->
+<!--    </footer>-->
+    <Editor/>
 </article>
