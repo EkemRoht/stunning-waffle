@@ -1,8 +1,6 @@
 <script>
     import {currentCompany} from "./js/currentCompanyStore.js";
-    import CompaniesManager from "./CompaniesManager.svelte";
-    import JSONUploader from "./JSONUploader.svelte";
-    import Editor from "./Editor.svelte";
+    import NoteEditor from "./NoteEditor.svelte";
 </script>
 
 {#if $currentCompany}
@@ -21,5 +19,5 @@
 <!--    <footer>-->
 <!--        <JSONUploader/>-->
 <!--    </footer>-->
-    <Editor/>
+    <NoteEditor/>
 </article>
