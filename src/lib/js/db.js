@@ -6,6 +6,6 @@ db.version(1).stores({
     waffleBits: 'name',
     waffles: 'name',
 
-    companies: '++id,name',
+    companies: '++id,name,activeShuffles',
     notes: '++id,name,company_id,*tags,content'
 });
