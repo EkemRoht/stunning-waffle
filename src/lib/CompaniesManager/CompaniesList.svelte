@@ -22,11 +22,11 @@
 
         <footer>
             <details>
-                <summary><h5>Создать новую компанию</h5></summary>
+                <summary><strong>Создать новую компанию</strong></summary>
                 <CompanyForm/>
             </details>
         </footer>
     {:else}
-        Loading
+        <center><a href="#" aria-busy="true">Загрузка компаний…</a></center>
     {/if}
 </article>

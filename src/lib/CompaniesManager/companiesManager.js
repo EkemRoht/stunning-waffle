@@ -2,14 +2,14 @@ import {db} from "../js/db.js";
 
 // Function to delete a company
 export async function deleteCompany(companyId) {
-    console.log('delete');
-    // await db.companies.delete(companyId);
+    // console.log('delete');
+    await db.companies.delete(companyId);
 }
 
 // Function to edit a company
 export async function editCompany(company) {
-    console.log('edit')
-    // await db.companies.put(company);
+    // console.log('edit')
+    await db.companies.put(company);
 }
 
 // Function to open a company
