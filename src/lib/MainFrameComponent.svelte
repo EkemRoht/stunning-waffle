@@ -10,6 +10,4 @@
     Когда-нибудь здесь будет что-то умное.
 {/if}
 
-<article>
-    <CompaniesList/>
-</article>
+<CompaniesList/>

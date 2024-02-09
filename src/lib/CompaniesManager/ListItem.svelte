@@ -1,20 +1,17 @@
 <!-- ListItem.svelte -->
 <script>
-    import { deleteCompany, openCompany, editCompany } from "./companiesManager.js";
+    import { deleteCompany, openCompany } from "./companiesManager.js";
 
     export let company;
 
     $: isChecked = false;
-    $: {
-        console.log(isChecked);
-    }
 </script>
 
-<div class="outline item" role="button">
-    <h3>{company.name}</h3>
-    <input type="checkbox" id="switch" name="switch" role="switch" bind:checked={isChecked}>
+<div class="outline item" role="button" on:click={openCompany}>
+    <h4>{company.name}</h4>
+    <input type="checkbox" role="switch" bind:checked={isChecked} on:click|stopPropagation>
     {#if isChecked}
-        <a href="#" on:click|preventDefault={deleteCompany}>Удалить</a>
+        <a href="#" on:click|preventDefault|stopPropagation={deleteCompany(company.id)}>Удалить</a>
     {/if}
 </div>
 
@@ -28,7 +25,7 @@
     .item:hover {
         border-color: var(--primary);
     }
-    .item > h3 {
+    .item > h4 {
         margin-bottom: 10px;
         text-transform: capitalize;
         line-height: 1.5rem;
